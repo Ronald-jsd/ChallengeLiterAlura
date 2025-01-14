@@ -1,0 +1,31 @@
+<!-- src/main/resources/logback-spring.xml -->
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- Patrón de formato para los mensajes de log -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- Desactivar logging  de HikariCP -->
+    <logger name="com.zaxxer.hikari" level="INFO" />
+
+    <!-- Desactivar logging  de Hibernate -->
+    <logger name="org.hibernate.SQL" level="INFO" />
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="WARN" />
+
+    <logger name="org.hibernate.tool.hbm2ddl" level="INFO" />
+
+    <logger name="org.hibernate.engine.transaction.internal.TransactionImpl" level="INFO" />
+
+    <logger name="org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl" level="INFO" />
+
+    <!-- Filtrar mensajes específicos de Hibernate -->
+    <logger name="org.hibernate.orm.connections.pooling" level="ERROR" />
+    <logger name="o.h.e.t.j.p.i.JtaPlatformInitiator" level="ERROR" />
+</configuration>
